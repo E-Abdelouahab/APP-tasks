@@ -1,5 +1,34 @@
 import Task from "../types/Task";
 
+export async function searchTasks(searchCriteria: { name?: string; finished?: boolean | null }) {
+    const requestOptions = {
+      method: 'GET',
+    };
+  
+    try {
+      // Build the search query based on the provided criteria
+      const { name, finished } = searchCriteria;
+      const queryParameters = [];
+  
+      if (name) {
+        queryParameters.push(`name=${encodeURIComponent(name)}`);
+      }
+  
+      if (finished !== null) {
+        queryParameters.push(`finished=${finished}`);
+      }
+  
+      const queryString = queryParameters.join('&');
+      const apiUrl = queryString ? `http://localhost:8080/tasks/search?${queryString}` : 'http://localhost:8080/tasks';
+  
+      const response = await fetch(apiUrl, requestOptions);
+      return await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  
 export async function getTasks()
 {
     const requestOptions = {
