@@ -6,7 +6,7 @@
       "dom.iterable",
       "esnext"
     ],
-    "outDir":"prod",
+    "outDir": "prod",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,7 +19,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "preserve"
   },
   "include": [
     "src"
