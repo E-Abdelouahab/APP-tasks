@@ -59,9 +59,10 @@ const TaskForm = ({onSubmit, task, userId}: FormProps) => {
             createdAt: new Date(),
         });
     };
-
+   
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-container">
+            {/* Rest of your code */}
             <label>
                 Nom :
                 <input
@@ -83,6 +84,16 @@ const TaskForm = ({onSubmit, task, userId}: FormProps) => {
             </label>
 
             <label>
+                Date de création :
+            <input
+                    type="date"
+                    name="createdAt"
+                    value={formData.createdAt.toISOString().split("T")[0]}
+                    onChange={handleChange}
+                />
+            </label>
+
+            <label>
                 Terminée :
                 <input
                     type="checkbox"
@@ -92,24 +103,10 @@ const TaskForm = ({onSubmit, task, userId}: FormProps) => {
                 />
             </label>
 
-            <label>
-                Date de création :
-                {/*
-                    Conversion de la date en string format 'YYYY-MM-DD' :
-                        - toISOString() : convertie au format 'YYYY-MM-DDTHH:mm:ss.sssZ'
-                        - split('T') : sépare la chaîne au niveau du 'T' : ['YYYY-MM-DD', 'YYYY-MM-DDZ']
-                        - [0] : récupère le premier élément du tableau : 'YYYY-MM-DD'
-                */}
-                <input
-                    type="date"
-                    name="createdAt"
-                    value={formData.createdAt.toISOString().split("T")[0]}
-                    onChange={handleChange}
-                />
-            </label>
-
             <button type="submit">Envoyer</button>
         </form>
+        
+    
     );
 }
 
